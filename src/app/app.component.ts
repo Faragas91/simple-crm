@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule, 
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
