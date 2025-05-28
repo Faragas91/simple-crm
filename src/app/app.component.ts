@@ -22,5 +22,4 @@ import { RouterLink } from '@angular/router';
 })
 export class AppComponent {
   title = 'simple-crm';
-  showFiller = false;
 }
