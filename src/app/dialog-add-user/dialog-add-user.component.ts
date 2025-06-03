@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../models/user.class';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -28,13 +29,19 @@ export class DialogAddUserComponent {
   user = new User();
   birthDate = new Date;
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    private firestore: Firestore) {
   }
 
   saveUser(): void {
     this.user.birthDate = this.birthDate.getTime();
-    console.log('User saved:', this.user);
-    // this.dialog.closeAll(); // Close the dialog after saving
+    const usersCollection = collection(this.firestore, 'users');
+    addDoc(usersCollection, this.user.toJSON()).then(() => {
+      console.log('User added successfully');
+      this.dialog.closeAll();
+    }).catch((error) => {
+      console.error('Error adding user: ', error);
+    });
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,7 +24,7 @@ import { Firestore, collection, collectionData } from '@angular/fire/firestore';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  firestore: Firestore = Inject(Firestore);
+  firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
 
   title = 'simple-crm';
