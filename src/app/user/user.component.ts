@@ -5,6 +5,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
+import { MatCardModule } from '@angular/material/card';
 import { User } from '../../models/user.class';
 
 @Component({
@@ -15,6 +16,7 @@ import { User } from '../../models/user.class';
     MatButtonModule,
     MatTooltipModule, 
     MatDialogModule,
+    MatCardModule,
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
