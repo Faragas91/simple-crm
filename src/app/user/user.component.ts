@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { MatCardModule } from '@angular/material/card';
 import { User } from '../../models/user.class';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -17,6 +19,7 @@ import { User } from '../../models/user.class';
     MatTooltipModule, 
     MatDialogModule,
     MatCardModule,
+     ReactiveFormsModule
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
@@ -26,12 +29,23 @@ export class UserComponent implements OnInit {
 
   name: string = '';
   user = new User();
+  allUsers: any[] = [];
 
-  constructor(public dialog: MatDialog) 
+  form = new FormGroup({
+    users: new FormControl('')
+  });
+
+  constructor(
+    public dialog: MatDialog,
+    private firestore: Firestore) 
    {}
 
-  ngOnInit(): void {
-    // Initialization logic can go here
+ ngOnInit(): void {
+    const usersCollection = collection(this.firestore, 'users');
+    collectionData(usersCollection, { idField: 'id' }).subscribe((users: any[]) => {
+      this.allUsers = users;
+      console.log('Users from Firestore:', this.allUsers);
+    });
   }
 
   openDialog(): void {

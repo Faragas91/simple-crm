@@ -1,20 +1,25 @@
 <mat-card>
     <table class="user-table">
-        <tr>
+        <thead>
+            <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Street</th>
             <th>Zip Code</th>
             <th>City</th>
-        </tr>
-        <tr>
-            <!-- @for (b of user; track $index) { -->
-                <td>{{ user.firstName }}</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (user of allUsers; track user.id) {
+            <tr>
+                <td>{{ user.firstName }} {{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.street }}</td>
                 <td>{{ user.zipCode }}</td>
                 <td>{{ user.city }}</td>
-        </tr>
+            </tr>
+            }
+        </tbody>
     </table>
 </mat-card>
 
