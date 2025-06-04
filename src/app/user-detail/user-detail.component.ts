@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { User } from '../../models/user.class';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 import { Firestore, doc, docData} from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   standalone: true,
   imports: [
     MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
@@ -40,4 +43,9 @@ export class UserDetailComponent {
         console.error('Error fetching user data:', error);
       });
     };
+
+  openAddressDialog(): void {
+    // Implementieren Sie hier die Logik zum Öffnen des Adressdialogs
+    console.log('Open address dialog for user:', this.user);
+  }
 }

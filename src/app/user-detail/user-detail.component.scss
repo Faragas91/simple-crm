@@ -27,3 +27,19 @@
         margin-bottom: 0;
     }
 }
+
+.pin-right-upper-corner {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+        border-radius: 50%;
+    }
+}
