@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             @for (user of allUsers; track user.id) {
-            <tr>
+            <tr (click)="navigateToUser(user.id)">
                 <td>{{ user.firstName }} {{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.street }}</td>

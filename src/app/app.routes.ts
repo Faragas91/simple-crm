@@ -5,6 +5,7 @@ import { UserComponent } from './user/user.component';
 export const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'user', component: UserComponent },
+    {path: 'user/:id', component: UserComponent },
 ];
 
 export class AppRoutes {}

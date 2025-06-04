@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { User } from '../../models/user.class';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -37,7 +38,8 @@ export class UserComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private firestore: Firestore) 
+    private firestore: Firestore,
+    private router: Router) 
    {}
 
  ngOnInit(): void {
@@ -50,5 +52,9 @@ export class UserComponent implements OnInit {
 
   openDialog(): void {
     this.dialog.open(DialogAddUserComponent);
+  }
+
+  navigateToUser(user: User): void {
+    this.router.navigate(['/user', user] );
   }
 }
