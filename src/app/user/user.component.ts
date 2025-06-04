@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
     MatTooltipModule, 
     MatDialogModule,
     MatCardModule,
-     ReactiveFormsModule
+    ReactiveFormsModule
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
@@ -42,7 +42,7 @@ export class UserComponent implements OnInit {
     private router: Router) 
    {}
 
- ngOnInit(): void {
+  ngOnInit(): void {
     const usersCollection = collection(this.firestore, 'users');
     collectionData(usersCollection, { idField: 'id' }).subscribe((users: any[]) => {
       this.allUsers = users;

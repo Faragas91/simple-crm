@@ -1,0 +1,29 @@
+.user-detail-header {
+    min-height: 250px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+
+    img {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        padding: 16px;
+    }
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100px;
+    padding: 16px;
+
+    h2 {
+        margin-bottom: 0;
+    }
+}
