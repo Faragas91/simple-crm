@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
   allUsers: any[] = [];
 
   form = new FormGroup({
-    users: new FormControl('')
+    users: new FormControl(''),
   });
 
   constructor(

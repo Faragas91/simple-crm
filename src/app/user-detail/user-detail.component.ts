@@ -35,7 +35,7 @@ export class UserDetailComponent {
     const userId = this.route.snapshot.paramMap.get('id');
     console.log('User ID from route:', userId);
     if (userId) {
-      this.getUser(userId); // <-- userId wird korrekt übergeben
+      this.getUser(userId);
     }
   }
 
@@ -51,10 +51,13 @@ export class UserDetailComponent {
     };
 
     editMenu() {
-      this.dialog.open(DialogEditAddressComponent)
+      const dialog = this.dialog.open(DialogEditAddressComponent);
+      dialog.componentInstance.user = this.user;
     }
 
     editUserDetails() {
-      this.dialog.open(DialogEditUserComponent)
+      const dialog = this.dialog.open(DialogEditUserComponent);
+      dialog.componentInstance.user = this.user;
+      dialog.componentInstance.birthDate = new Date(this.user.birthDate);
     }
 }
