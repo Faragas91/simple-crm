@@ -3,8 +3,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
 import { Firestore, doc, docData} from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -13,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule, 
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
@@ -24,7 +27,8 @@ export class UserDetailComponent {
 
   constructor(
     private firestore: Firestore, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {} 
   
   ngOnInit(): void {
@@ -47,12 +51,10 @@ export class UserDetailComponent {
     };
 
     editMenu() {
-      console.log('Edit menu clicked');
-      // Hier können Sie die Logik für das Bearbeiten des Benutzers hinzufügen
+      this.dialog.open(DialogEditAddressComponent)
     }
 
     editUserDetails() {
-      console.log('Edit user details clicked');
-      // Hier können Sie die Logik für das Bearbeiten der Benutzerdetails hinzufügen
+      this.dialog.open(DialogEditUserComponent)
     }
 }
