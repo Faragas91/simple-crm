@@ -9,7 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../models/user.class';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dialog-edit-address',
@@ -29,15 +29,29 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 })
 export class DialogEditAddressComponent {
   user: User;
+  userId: any;
   loading = false;
 
   constructor(
     public dialog: MatDialog,
-    ) {
-    this.user = new User();
+    private firestore: Firestore) {
+      this.user = new User();
   }
 
   saveEditedAddress() {
+    const userId = this.userId;
+    const userRef = doc(this.firestore, `users/${userId}`);
+    this.loading = true;
 
+    updateDoc(userRef, this.user.toJSON())
+      .then(() => {
+        this.loading = false;
+        this.dialog.closeAll();
+      })
+      .catch((error) => {
+        console.error('Error updating address:', error);
+        this.loading = false;
+      });
   }
+
 }
