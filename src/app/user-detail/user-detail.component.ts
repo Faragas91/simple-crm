@@ -8,6 +8,7 @@ import { Firestore, doc, docData} from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { User } from '../../models/user.class';
 
 @Component({
   selector: 'app-user-detail',
@@ -52,12 +53,11 @@ export class UserDetailComponent {
 
     editMenu() {
       const dialog = this.dialog.open(DialogEditAddressComponent);
-      dialog.componentInstance.user = this.user;
+      dialog.componentInstance.user = new User(this.user);
     }
 
     editUserDetails() {
       const dialog = this.dialog.open(DialogEditUserComponent);
-      dialog.componentInstance.user = this.user;
-      dialog.componentInstance.birthDate = new Date(this.user.birthDate);
+      dialog.componentInstance.user = new User(this.user);
     }
 }
