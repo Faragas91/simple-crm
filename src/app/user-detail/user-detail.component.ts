@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { Firestore, doc, docData} from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   imports: [
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
@@ -44,8 +46,13 @@ export class UserDetailComponent {
       });
     };
 
-  openAddressDialog(): void {
-    // Implementieren Sie hier die Logik zum Öffnen des Adressdialogs
-    console.log('Open address dialog for user:', this.user);
-  }
+    editMenu() {
+      console.log('Edit menu clicked');
+      // Hier können Sie die Logik für das Bearbeiten des Benutzers hinzufügen
+    }
+
+    editUserDetails() {
+      console.log('Edit user details clicked');
+      // Hier können Sie die Logik für das Bearbeiten der Benutzerdetails hinzufügen
+    }
 }
